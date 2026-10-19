@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#A61B29">
+<title>中央财经大学 · NFC 迎新欢迎页</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23A61B29'/%3E%3Ctext x='32' y='43' font-size='26' font-family='serif' font-weight='700' fill='%23E5C76B' text-anchor='middle'%3E%E4%B8%AD%E8%B4%A2%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --red:#A61B29;
+    --red-deep:#7E1220;
+    --gold:#C9A227;
+    --gold-light:#E5C76B;
+    --navy:#16294A;
+    --ink:#2B2B2B;
+    --muted:#6B6B6B;
+    --paper:#FAF7F0;
+    --paper-deep:#EFE8DA;
+    --line:#E3DCCB;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'Noto Sans SC','Microsoft YaHei',system-ui,-apple-system,'PingFang SC',sans-serif;
+    background:#E9E2D3;
+    color:var(--ink);
+    line-height:1.5;
+  }
+  .page{
+    max-width:560px;
+    margin:0 auto;
+    background:var(--paper);
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 0 40px rgba(60,40,20,.12);
+  }
+
+  /* ===== 顶部校园主视觉 ===== */
+  .hero{
+    position:relative;
+    height:318px;
+    background:var(--red-deep);
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:50% 34%;
+  }
+  .hero-veil{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(126,18,32,.10) 0%,rgba(126,18,32,.42) 46%,rgba(126,18,32,.88) 100%);
+  }
+  .hero-fade{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(250,247,240,0) 68%,var(--paper) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:1;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
+    padding-bottom:42px;
+    text-align:center;
+  }
+  .crest-wrap{
+    width:86px;height:86px;
+    border-radius:50%;
+    background:#fff;
+    padding:5px;
+    box-shadow:0 6px 18px rgba(0,0,0,.28),0 0 0 3px rgba(229,199,107,.55);
+  }
+  .crest-wrap img{
+    width:100%;height:100%;
+    object-fit:contain;
+    display:block;
+    border-radius:50%;
+  }
+  .sch-cn{
+    margin-top:14px;
+    font-family:'Noto Serif SC',serif;
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:.10em;
+    color:#fff;
+    text-shadow:0 2px 10px rgba(0,0,0,.35);
+  }
+  .sch-en{
+    margin-top:6px;
+    font-size:13px;
+    letter-spacing:.14em;
+    color:rgba(255,255,255,.88);
+    text-shadow:0 1px 6px rgba(0,0,0,.3);
+  }
+  .gold-line{
+    margin-top:12px;
+    width:44px;height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold-light),transparent);
+  }
+
+  /* ===== 欢迎区 ===== */
+  .welcome{
+    flex:1;
+    padding:30px 26px 26px;
+    display:flex;
+    flex-direction:column;
+  }
+  .person-line{
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:6px;
+    font-size:15px;
+    color:var(--navy);
+  }
+  .person-name{font-weight:700;font-size:34px;line-height:1.32;}
+  .person-id{color:var(--muted);font-size:14px;}
+  .slogan{
+    margin-top:14px;
+    font-family:'Noto Serif SC',serif;
+    font-size:34px;
+    font-weight:900;
+    line-height:1.32;
+    text-align:center;
+    color:var(--red);
+    letter-spacing:.02em;
+  }
+  .sub{
+    margin-top:12px;
+    font-size:14px;
+    text-align:center;
+    color:var(--muted);
+  }
+
+  /* ===== 三个入口 ===== */
+  .entrances{
+    margin-top:26px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .btn{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    min-height:58px;
+    padding:12px 18px;
+    border-radius:14px;
+    text-decoration:none;
+    font-family:inherit;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .btn:active{transform:scale(.985);}
+  .btn-icon{
+    flex:none;
+    width:24px;height:24px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .btn-icon svg{width:24px;height:24px;}
+  .btn-text{flex:1;display:flex;flex-direction:column;min-width:0;}
+  .btn-title{font-size:16px;font-weight:700;line-height:1.3;}
+  .btn-hint{font-size:13px;font-weight:400;color:var(--muted);line-height:1.4;margin-top:1px;}
+  .btn-arrow{
+    flex:none;
+    width:18px;height:18px;
+    color:var(--muted);
+  }
+  .btn-arrow svg{width:18px;height:18px;}
+
+  .btn-site{
+    background:#fff;
+    border:1.5px solid var(--navy);
+    color:var(--navy);
+  }
+  .btn-site:hover{
+    background:#F3F6FB;
+    box-shadow:0 4px 12px rgba(22,41,74,.12);
+  }
+  .btn-site:active{box-shadow:none;}
+
+  .btn-mini{
+    background:linear-gradient(135deg,#07C160 0%,#059A4D 100%);
+    border:none;
+    color:#fff;
+    box-shadow:0 4px 14px rgba(7,193,96,.28);
+  }
+  .btn-mini:hover{box-shadow:0 6px 18px rgba(7,193,96,.38);}
+  .btn-mini:active{box-shadow:0 2px 8px rgba(7,193,96,.25);}
+  .btn-mini .btn-hint{color:rgba(255,255,255,.85);}
+  .btn-mini .btn-arrow{color:rgba(255,255,255,.9);}
+
+  /* ===== 底部 ===== */
+  .foot{
+    padding:22px 20px 30px;
+    text-align:center;
+    font-size:13px;
+    color:var(--muted);
+    border-top:1px solid var(--line);
+    background:var(--paper);
+  }
+  .foot b{color:var(--red);font-weight:700;}
+
+  /* ===== Toast ===== */
+  .toast{
+    position:fixed;
+    left:50%;
+    bottom:34px;
+    transform:translateX(-50%) translateY(8px);
+    max-width:82%;
+    background:rgba(20,20,20,.92);
+    color:#fff;
+    font-size:14px;
+    line-height:1.5;
+    padding:11px 18px;
+    border-radius:10px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+    z-index:99;
+    text-align:center;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* 键盘焦点可见 */
+  .btn:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+
+  /* 动效偏好 */
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none!important;animation:none!important;}
+  }
+
+  /* ===== 桌面端微调 ===== */
+  @media (min-width:768px){
+    .hero{height:348px;}
+    .welcome{padding:36px 40px 30px;}
+    .slogan{font-size:38px;}
+    .person-name{font-size:38px;}
+    .crest-wrap{width:96px;height:96px;}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== 视图：顶部校园主视觉 ===== -->
+  <header class="hero">
+    <img class="hero-bg" src="assets/campus.jpg" alt="中央财经大学校园">
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="hero-fade" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="crest-wrap">
+        <img src="assets/logo1.png" alt="中央财经大学校徽">
+      </div>
+      <h1 class="sch-cn">中央财经大学</h1>
+      <p class="sch-en">CENTRAL UNIVERSITY OF FINANCE AND ECONOMICS</p>
+      <div class="gold-line" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <!-- ===== 视图：欢迎语 ===== -->
+  <main class="welcome">
+    <p class="person-line">
+      <span class="person-name" id="studentName">xxx同学</span>
+      <span class="person-id" id="studentId"></span>
+    </p>
+    <h2 class="slogan">欢迎你成为<br>中财的一员</h2>
+    <p class="sub">从此刻起，与中财同行。<br>点击下方入口，开启你的校园之旅。</p>
+
+    <!-- ===== 视图：三个入口 ===== -->
+    <nav class="entrances" aria-label="校园入口">
+      <a class="btn btn-site" href="https://www.cufe.edu.cn/" target="_blank" rel="noopener">
+        <span class="btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+        </span>
+        <span class="btn-text">
+          <span class="btn-title">学校官网</span>
+          <span class="btn-hint">www.cufe.edu.cn</span>
+        </span>
+        <span class="btn-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="btn btn-site" href="https://bs.cufe.edu.cn/" target="_blank" rel="noopener">
+        <span class="btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C6 4.4 8 4.3 12 5.8v13.7c-4-1.5-6-1.4-8-.3z"/><path d="M20 5.5c-2-1.1-4-1.2-8 .3v13.7c4-1.5 6-1.4 8 .3z"/></svg>
+        </span>
+        <span class="btn-text">
+          <span class="btn-title">商学院官网</span>
+          <span class="btn-hint">bs.cufe.edu.cn</span>
+        </span>
+        <span class="btn-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <button class="btn btn-mini" id="miniBtn" type="button">
+        <span class="btn-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11.2 5C7.2 5 4 7.7 4 11c0 1.9 1 3.6 2.5 4.8L6 18l2.5-1.3c.9.2 1.8.3 2.7.3h.6"/><path d="M20.5 13.5c0-2.7-2.6-4.9-5.8-4.9s-5.8 2.2-5.8 4.9 2.6 4.9 5.8 4.9c.6 0 1.2-.1 1.8-.3l2.2 1.1-.5-1.9c1.4-1 2.3-2.4 2.3-3.8z"/></svg>
+        </span>
+        <span class="btn-text">
+          <span class="btn-title">校友小程序</span>
+          <span class="btn-hint">中财大人 · 跳转微信</span>
+        </span>
+        <span class="btn-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </button>
+    </nav>
+  </main>
+
+  <!-- ===== 视图：底部 ===== -->
+  <footer class="foot">
+    <b>中央财经大学</b> · NFC 迎新纪念<br>
+    此页面由 NFC 一碰唤起，欢迎语来自卡片内置信息
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ===== 可配置区 =====
+   * 1) 校友小程序跳转链接：
+   *    当前是微信内部短链（#小程序:// 格式），只能在微信里识别。
+   *    拿到微信官方生成的 URL Link / URL Scheme 后，把下面这一行替换掉，例如：
+   *    var MINI_LINK = 'https://wxaurl.cn/xxxxxxx';           // URL Link
+   *    var MINI_LINK = 'weixin://dl/business/?t=xxxxxxx';     // URL Scheme
+   */
+  var MINI_LINK = '#小程序://中财大人/O31K2od8YdfCmNr';
+
+  /* ===== 1. 读取卡片内姓名、学号（URL 参数） ===== */
+  var params = new URLSearchParams(window.location.search);
+  var name = (params.get('name') || '').trim();
+  var sid  = (params.get('sid')  || '').trim();
+
+  var nameEl = document.getElementById('studentName');
+  var idEl   = document.getElementById('studentId');
+  if (name) { nameEl.textContent = name + '同学'; }
+  if (sid)  { idEl.textContent = '（' + sid + '）'; }
+
+  /* ===== 2. 校友小程序按钮 ===== */
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+
+  function showToast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2600);
+  }
+
+  function inWeChat(){
+    return /MicroMessenger/i.test(navigator.userAgent);
+  }
+
+  function copyText(text, done){
+    function legacy(){
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly','');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch(e){}
+      document.body.removeChild(ta);
+      done();
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, legacy);
+    } else {
+      legacy();
+    }
+  }
+
+  var miniBtn = document.getElementById('miniBtn');
+  miniBtn.addEventListener('click', function(){
+    /* 已配置可跳转的官方链接（URL Link / URL Scheme）时，直接跳转 */
+    if (/^(https?:\/\/|weixin:\/\/)/i.test(MINI_LINK)) {
+      window.location.href = MINI_LINK;
+      return;
+    }
+    /* 在微信内打开本页时，#小程序:// 短链可直接唤起小程序 */
+    if (inWeChat()) {
+      window.location.href = MINI_LINK;
+      return;
+    }
+    /* 在系统浏览器（NFC 一碰进入的场景）：复制链接，引导去微信打开 */
+    copyText(MINI_LINK, function(){
+      showToast('链接已复制，请粘贴到微信中打开「中财大人」小程序');
+    });
+  });
+})();
+</script>
+</body>
+</html>
